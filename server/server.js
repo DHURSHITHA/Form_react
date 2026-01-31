@@ -18,11 +18,19 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.indexOf(origin) === -1) {
+    // Allow all your domains
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://form-react-1-xfbw.onrender.com',
+      'https://form-react-d5kr.onrender.com'
+    ];
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    } else {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
-    return callback(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -33,7 +41,7 @@ app.use(cors({
 const allowedOrigins = [
   'http://localhost:3000',
   'https://form-react-1-xfbw.onrender.com',  // ← FRONTEND domain
-  'https://form-react-d5kr.onrender.com'     // ← BACKEND domain (optional)
+  //     // ← BACKEND domain (optional)
 ];
 
 
@@ -41,6 +49,24 @@ const allowedOrigins = [
 const SECRET = process.env.JWT_SECRET||"1234";
 const GOOGLE_CLIENT_ID = "732537579525-0vh7jkpkhp5c8dt4k6fh1aelcu53hame.apps.googleusercontent.com";
 const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
+
+// Add this middleware BEFORE your routes
+app.use((req, res, next) => {
+  const allowedOrigins = ['http://localhost:3000', 'https://form-react-1-xfbw.onrender.com'];
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 // Debug middleware to log all requests
 app.use((req, res, next) => {
