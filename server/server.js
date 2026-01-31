@@ -25,8 +25,8 @@ app.use(express.json());
 
 // Configuration
 const SECRET = process.env.JWT_SECRET || "1234";
-const GOOGLE_CLIENT_ID = "732537579525-0vh7jkpkhp5c8dt4k6fh1aelcu53hame.apps.googleusercontent.com";
-const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
+// const GOOGLE_CLIENT_ID = "732537579525-0vh7jkpkhp5c8dt4k6fh1aelcu53hame.apps.googleusercontent.com";
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Debug middleware to log all requests
 app.use((req, res, next) => {
@@ -104,7 +104,7 @@ app.post("/api/auth/google", async (req, res) => {
     // Verify token with Google
     const ticket = await googleClient.verifyIdToken({
       idToken: id_token,
-      audience: GOOGLE_CLIENT_ID
+      audience: process.env.GOOGLE_CLIENT_ID
     });
 
     const payload = ticket.getPayload();
@@ -582,7 +582,7 @@ app.use((err, req, res, next) => {
 });
 
 // ================= START SERVER =================
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`📝 Health check: http://localhost:${PORT}/api/health`);
