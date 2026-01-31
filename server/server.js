@@ -10,8 +10,9 @@ dotenv.config();
 const app = express();
 
 // ✅ CORRECT: ONLY ONE CORS CONFIGURATION
+// ✅ BEST: Allow both development and production
 app.use(cors({
-  origin: 'https://form-react-1-xfbw.onrender.com',  // ONLY your frontend
+  origin: ['http://localhost:3000', 'https://form-react-1-xfbw.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
