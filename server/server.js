@@ -12,7 +12,7 @@ const app = express();
 // ✅ CORRECT: ONLY ONE CORS CONFIGURATION
 // ✅ BEST: Allow both development and production
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://frontend-d7ej.onrender.com'],
+  origin: ['http://localhost:3000', 'https://backend-7h0q.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -582,11 +582,11 @@ app.use((err, req, res, next) => {
 });
 
 // ================= START SERVER =================
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT ||"https://backend-7h0q.onrender.com";
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`📝 Health check: http://localhost:${PORT}/api/health`);
   console.log(`🔍 Test token: http://localhost:${PORT}/api/test-token`);
   console.log(`🔐 User details API: http://localhost:${PORT}/api/user/details`);
   console.log(`🔐 Google login API: http://localhost:${PORT}/api/auth/google`);
-});``
+});

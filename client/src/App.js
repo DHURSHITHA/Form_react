@@ -5,7 +5,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Login from './components/Auth/Login';
 import Dashboard from './components/Dashboard';
 import './App.css';
-const API=process.env.REACT_APP_UR||"http://localhost:10000";
+const API=process.env.REACT_APP_UR||"https://backend-7h0q.onrender.com";
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID ||
   "732537579525-3k1mbq9pkitmb8kldvdorbaro097sv4u.apps.googleusercontent.com";
 
