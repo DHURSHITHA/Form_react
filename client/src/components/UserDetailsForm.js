@@ -1,7 +1,7 @@
 // src/components/UserDetailsForm.js
 import React, { useState, useEffect } from 'react';
 import './UserDetailsForm.css';
-const API="http://localhost:5000";
+const API=process.env.REACT_APP_API_URL || "http://localhost:5000";
 const UserDetailsForm = ({ user, onSuccess }) => {
   const [formData, setFormData] = useState({
     fullName: '',

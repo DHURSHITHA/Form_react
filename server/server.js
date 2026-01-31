@@ -32,7 +32,8 @@ app.use(cors({
 //update cors configuration
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://your-app.onrender.com'
+  'https://form-react-1-xfbw.onrender.com',  // ← FRONTEND domain
+  'https://form-react-d5kr.onrender.com'     // ← BACKEND domain (optional)
 ];
 
 
