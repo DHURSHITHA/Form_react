@@ -12,7 +12,7 @@ const app = express();
 // ✅ CORRECT: ONLY ONE CORS CONFIGURATION
 // ✅ BEST: Allow both development and production
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://form-react-1-xfbw.onrender.com'],
+  origin: ['http://localhost:3000', 'https://frontend-d7ej.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
