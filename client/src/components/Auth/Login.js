@@ -1,5 +1,5 @@
 // src/components/Auth/Login.js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from "@react-oauth/google";
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
@@ -12,6 +12,13 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+
+   useEffect(() => {
+    console.log("🔍 API_URL from environment:", API_URL);
+    console.log("🔍 Full process.env:", process.env);
+    console.log("🔍 REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
+  }, []);
 
   const clearMessages = () => {
     setError('');
