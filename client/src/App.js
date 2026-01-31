@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard';
 import './App.css';
 const API=process.env.REACT_APP_URL;
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || 
-  "732537579525-0vh7jkpkhp5c8dt4k6fh1aelcu53hame.apps.googleusercontent.com";
+  "732537579525-3k1mbq9pkitmb8kldvdorbaro097sv4u.apps.googleusercontent.com";
 
 // const GOOGLE_CLIENT_ID = "732537579525-0vh7jkpkhp5c8dt4k6fh1aelcu53hame.apps.googleusercontent.com";
 
